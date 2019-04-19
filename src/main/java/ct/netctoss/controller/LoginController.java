@@ -3,7 +3,7 @@ package ct.netctoss.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 //"loginController"
-@Controller
+@Controller("LoginController")
 public class LoginController {
 
 	@RequestMapping("/toLogin.do")

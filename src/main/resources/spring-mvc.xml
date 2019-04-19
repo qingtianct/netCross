@@ -19,21 +19,33 @@
         
         
 	<!-- 配置handlermapping -->
-	<!-- <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	  <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/login.do">LoginController</prop>
+				<!-- <prop key="/login.do">LoginController</prop> -->
 			</props>
 		</property>
-	</bean> -->
+	</bean> 
 	
 	<!-- 配置Controller -->
-	<!-- <bean id="helloController" class="ct.netctoss.controller.LoginController" /> -->
+	<bean id="LoginController" class="ct.netctoss.controller.LoginController" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<!-- 读取db.properties文件 -->
+	<util:properties id="db" location="classpath:db.properties" />
+	<!-- 配置连接池 -->
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="#{db.driver}" />
+		<property name="url" value="#{db.url}" />
+		<property name="username" value="#{db.user}" />
+		<property name="password" value="#{db.pwd}" />
+	</bean>
+	
+	
 </beans>
 
 
